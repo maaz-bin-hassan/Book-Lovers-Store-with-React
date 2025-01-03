@@ -1,7 +1,15 @@
 import React from 'react';
 import AddedProduct from '../AddedProduct/AddedProduct';
 
-const Cart = ({ cart, randomBookSelector, chooseAgainHandler, handleProductDelete }) => {
+const Cart = ({ cart, handleProductDelete }) => {
+    const handleCheckout = () => {
+        alert('Proceeding to checkout!');
+    };
+
+    const emptyCart = () => {
+        // Clear all items from cart
+        cart.forEach(item => handleProductDelete(item));
+    };
 
     return (
         <div>
@@ -13,8 +21,8 @@ const Cart = ({ cart, randomBookSelector, chooseAgainHandler, handleProductDelet
                 }
             </div>
             <div className='flex px-3 justify-between mb-5 mx-4 md:mx-0'>
-                <button onClick={randomBookSelector} className='bg-black text-white p-2 font-medium rounded-md'>Choose 1 for me</button>
-                <button onClick={chooseAgainHandler} className='bg-black text-white p-2 font-medium rounded-md'>Choose Again</button>
+                <button onClick={handleCheckout} className='bg-black text-white p-2 font-medium rounded-md'>Checkout</button>
+                <button onClick={emptyCart} className='bg-black text-white p-2 font-medium rounded-md'>Empty Cart</button>
             </div>
         </div>
     );
